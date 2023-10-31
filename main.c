@@ -13,7 +13,12 @@ do {
     printf("1. Criar tarefa; \n");
     printf("2. Remover tarefa; \n");
     printf("3. Listar tarefa; \n");
-    printf("4. Finalizar; \n");
+    printf("4. ; \n");
+    printf("5. ; \n");
+    printf("6. ; \n");
+    printf("7. ; \n");
+    printf("8. ; \n");
+
     scanf("%d ", &opcao);
     getchar();
 
@@ -30,9 +35,23 @@ do {
             break;
 
         case 4:
-            
             break;
 
+        case 5:
+            break;
+        
+        case 6:
+            break;
+
+        case 7:
+            break;
+        
+        case 8:
+            break;
+        
+        case 9:
+            break;
+            
         default:
             printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. Finalizar; ");
     }

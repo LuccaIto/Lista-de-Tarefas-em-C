@@ -3,13 +3,12 @@
 #include <string.h>
 
 int *Contador_Tarefas;
-int Lista_Tarefas[] = {};
 int indice = 0;
 
 
 //Essa função cria uma tarefa na lista
-void Criar_Tarefa(struct Lista_Tarefas Lista[], int *Contador_Tarefas){
-    struct Lista_Tarefas tarefa;
+void Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){    
+    Lista_Tarefas tarefa;
 
     if (*Contador_Tarefas <= 100) {
         printf("Digite a descricao da tarefa: \n");
@@ -34,10 +33,10 @@ void Criar_Tarefa(struct Lista_Tarefas Lista[], int *Contador_Tarefas){
 }
 
 //Essa função remove tarefa/s da lista
-void Remove_Tarefas(struct Lista_Tarefas Lista[], int *Contador_Tarefas){
+void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
     if (*Contador_Tarefas > 0 && indice > 0 && indice <= *Contador_Tarefas){
         for (int i = indice ; i < *Contador_Tarefas ; ++i) {
-            Lista_Tarefas[i] = Lista_Tarefas[i + 1];
+            Lista[i] = Lista[i + 1];
         }
         (*Contador_Tarefas --);
         printf("Remoção realizada com sucesso!! \n");
@@ -50,19 +49,19 @@ void Remove_Tarefas(struct Lista_Tarefas Lista[], int *Contador_Tarefas){
 }
 
 //Essa função lista as tarefas ja criadas
-void Listar_Tarefas(struct Lista_Tarefas Lista[], int *Contador_Tarefas){
-    struct Lista_Tarefas tarefa;
+void Listar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
     if (Contador_Tarefas > 0){
         printf("Lista de tarefas: \n");
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
             printf("Tarefa: \n", i + 1);
-            printf("Descrição: \n", tarefa.descricao);
-            printf("Conteudo: \n", tarefa.conteudo);
-            printf("Prioridade: \n", tarefa.prioridade);
+            printf("Descrição: \n", Lista[i].descricao);
+            printf("Conteudo: \n", Lista[i].conteudo);
+            printf("Prioridade: \n", Lista[i].prioridade);
         }
     } else{
         printf("A lista esta vazia! ");
         return 0; //Erro
-    }
+}
+}
