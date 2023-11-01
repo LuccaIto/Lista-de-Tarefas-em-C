@@ -5,38 +5,60 @@
 int *Contador_Tarefas;
 int indice = 0;
 
+// int menu(){
+//     printf("Selecione a tarefa desejada abaixo: \n");
+//     printf("1. Criar tarefa; \n");
+//     printf("2. Remover tarefa; \n");
+//     printf("3. Listar tarefa; \n");
+//     printf("4. ; \n");
+//     printf("5. ; \n");
+//     printf("6. ; \n");
+//     printf("7. ; \n");
+//     printf("8. ; \n");
+// }
 
 //Essa função cria uma tarefa na lista
-void Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){    
-    Lista_Tarefas tarefa;
+int Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){    
 
     if (*Contador_Tarefas <= 100) {
-        printf("Digite a descricao da tarefa: \n");
-        scanf("%s", &tarefa.descricao);
+        printf("\n Digite a descricao da tarefa: ");
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].descricao);
+        Clear_buffer();
 
-        printf("Digite o conteudo da tarefa: \n");
-        scanf("%s", &tarefa.conteudo);
+        printf("\n Digite o conteudo da tarefa: ");
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].conteudo);
+        Clear_buffer();
 
-        printf("Digite a prioridade desejada(de 0 a 10: \n");
-        scanf("%i", &tarefa.prioridade);
+        printf("\n Digite a prioridade desejada(de 0 a 10): ");
+        scanf("%d", &Lista[*Contador_Tarefas].prioridade);
+        Clear_buffer();
 
-        printf("Lista realizada com sucesso!! \n");
-        return 1; // Sucesso.
+        printf("\n Lista realizada com sucesso!! \n");
+        
 
-        Lista[*Contador_Tarefas] = tarefa;
         *Contador_Tarefas = *Contador_Tarefas + 1;
+        printf("%d", *Contador_Tarefas);
+        return 1;
     }
     else{
-        printf("A lista infelizmente esta full. Remova outra tarefa para poder acrescentar outra. \n");
+        printf("A lista infelizmente esta cheia. Remova outra tarefa para poder acrescentar outra. \n");
         return 0; // Falha.
     }
 }
 
 //Essa função remove tarefa/s da lista
 void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    char remove_descricao;
+
+
     if (*Contador_Tarefas > 0 && indice > 0 && indice <= *Contador_Tarefas){
+        printf("digite a descricao da tarefa: ");
+        scanf("%s", &remove_descricao);
+
         for (int i = indice ; i < *Contador_Tarefas ; ++i) {
+            if(strcmp(remove_descricao,Lista[*Contador_Tarefas].descricao) == 0){
             Lista[i] = Lista[i + 1];
+            }
         }
         (*Contador_Tarefas --);
         printf("Remoção realizada com sucesso!! \n");
@@ -51,17 +73,22 @@ void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 //Essa função lista as tarefas ja criadas
 void Listar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
-    if (Contador_Tarefas > 0){
+    if (*Contador_Tarefas > 0){
         printf("Lista de tarefas: \n");
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
             printf("Tarefa: \n", i + 1);
-            printf("Descrição: \n", Lista[i].descricao);
-            printf("Conteudo: \n", Lista[i].conteudo);
-            printf("Prioridade: \n", Lista[i].prioridade);
+            printf(" -->   Descrição: \n", Lista[i].descricao);
+            printf(" -->   Conteudo: \n", Lista[i].conteudo);
+            printf(" -->   Prioridade: \n", Lista[i].prioridade);
         }
     } else{
         printf("A lista esta vazia! ");
         return 0; //Erro
 }
+}
+
+void Clear_buffer(){  //evita erros com a funcao scanf
+    int c;
+    while((c = getchar()) != '\n' && c != EOF);
 }

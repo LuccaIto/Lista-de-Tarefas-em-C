@@ -5,8 +5,8 @@
 int main() {
 Lista_Tarefas Lista[100];
 int contador_tarefas = 0;
-int opcao;
 int indice;
+int opcao;
 
 do {
     printf("Selecione a tarefa desejada abaixo: \n");
@@ -19,17 +19,16 @@ do {
     printf("7. ; \n");
     printf("8. ; \n");
 
-    scanf("%d ", &opcao);
-    getchar();
+    scanf("%d", &opcao);
+    //Clear_buffer();
 
     switch (opcao) {
          case 1:
             Criar_Tarefa(Lista, &contador_tarefas);
             break;
-
         case 2:
             Remove_Tarefas(Lista, &contador_tarefas);
-
+            break;
         case 3:
             Listar_Tarefas(Lista, &contador_tarefas);
             break;
@@ -53,10 +52,21 @@ do {
             break;
             
         default:
-            printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. Finalizar; ");
+            printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. ; ");
     }
 
-} while (opcao != 4);
+
+}while (opcao != 9);
 return 0;
 
 }
+// menu();
+
+// scanf(" %d", opcao);
+// Clear_buffer();
+
+// if(opcao == 1){
+//     Criar_Tarefa(Lista, &contador_tarefas);
+// }while(opcao != 9);
+
+//}

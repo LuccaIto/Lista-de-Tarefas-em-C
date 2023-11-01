@@ -9,10 +9,15 @@ typedef struct {
     int prioridade;
 } Lista_Tarefas;
 
-void Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas);
+int menu();
+
+int Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas);
 
 void Remove_Tarefas( Lista_Tarefas Lista[], int *Contador_Tarefas);
 
 void Listar_Tarefas( Lista_Tarefas Lista[], int *Contador_Tarefas);
+
+
+void Clear_buffer();
 
 #endif //PROJETO_2_BANCO_H
