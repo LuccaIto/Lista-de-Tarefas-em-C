@@ -22,9 +22,11 @@ do {
     scanf("%d", &opcao);
     //Clear_buffer();
 
+
+// acho q estou puxando errado o "contador_tarefas"
     switch (opcao) {
          case 1:
-            Criar_Tarefa(Lista, &contador_tarefas);
+            Criar_Tarefa(Lista, &Contador_Tarefas);
             break;
         case 2:
             Remove_Tarefas(Lista, &contador_tarefas);
@@ -34,29 +36,43 @@ do {
             break;
 
         case 4:
+            Alterar_Tarefas(Lista, &contador_tarefas);
             break;
 
         case 5:
+            Filtrar_Prioridade();
             break;
         
         case 6:
+            Filtrar_Estado();
             break;
 
         case 7:
+            Filtrar_Categoria();
             break;
         
         case 8:
+            Filtrar_Prioridade_Categoria();
             break;
         
         case 9:
+            Exportar_Prioridade();
             break;
-            
+        
+        case 10:
+            Expotar_Categoria();
+            break;
+        
+        case 11:
+            Exportar_Prioridade_Categoria();
+            break;
+
         default:
-            printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. ; ");
+            printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. Alterar_Tarefas; 5. Filtrar_Prioridade; 6. Filtrar_Estado; 7. Filtrar_Categoria; 8. Filtrar_Prioridade_Categoria; 9. Exportar_Prioridade; 10. Expotar_Categoria; 11. Exportar_Prioridade_Categoria;");
     }
 
 
-}while (opcao != 9);
+}while (opcao != 0);
 return 0;
 
 }
