@@ -17,6 +17,10 @@ void Remove_Tarefas( Lista_Tarefas Lista[], int *Contador_Tarefas);
 
 void Listar_Tarefas( Lista_Tarefas Lista[], int *Contador_Tarefas);
 
+void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas);
+
+void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas);
+
 
 void Clear_buffer();
 

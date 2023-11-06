@@ -97,11 +97,11 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
     char novo_conteudo;
     char nova_prioridade;
 
-    printf("Digite o nome da decricao para alterar: ");
+    printf("Digite o nome da decricao para alterar: \n");
     scanf("%d", &altera_descricao);
 
     if (*Contador_Tarefas > 0 ){
-        printf("digite a descricao da tarefa: ");
+        printf("digite a descricao da tarefa: \n");
         scanf("%s", &altera_descricao);
 
         for (int i = 0 ; i < *Contador_Tarefas ; ++i) {
@@ -109,10 +109,10 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
                 printf("Digite a nova descricao: \n");
                 scanf("%d", &nova_descricao);
 
-                printf("Digite o novo conteudo: ");
+                printf("Digite o novo conteudo: \n");
                 scanf("%d", &novo_conteudo);
 
-                printf("Digite a nova prioridade: ");
+                printf("Digite a nova prioridade: \n");
                 scanf("%d", &nova_prioridade);
 
                 nova_descricao == Lista[*Contador_Tarefas].descricao;
@@ -125,10 +125,18 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 }
 
 void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    int prioridade_escolhida;
 
     if(*Contador_Tarefas > 0){
-        
-    }
+        printf("Digite a prioridade escolhida: \n");
+        scanf("%i", &prioridade_escolhida);
+
+        for (int i = 0; i < *Contador_Tarefas; ++i) {
+            if(strchr(prioridade_escolhida, Lista[*Contador_Tarefas].prioridade) == 0 ){
+                printf("Lista: \n", i + 1);
+            }
+        }   
+}
 }
 
 
