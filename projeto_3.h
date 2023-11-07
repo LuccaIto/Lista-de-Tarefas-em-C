@@ -5,7 +5,7 @@ int *Contador_Tarefas;
 
 typedef struct {
     char descricao[300];
-    char conteudo[100];
+    char categoria[100];
     int prioridade;
 } Lista_Tarefas;
 

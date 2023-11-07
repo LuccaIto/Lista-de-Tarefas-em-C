@@ -26,13 +26,14 @@ int Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){
         Clear_buffer();
 
         printf("\n Digite o conteudo da tarefa: ");
-        scanf(" %[^\n]", Lista[*Contador_Tarefas].conteudo);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].conteudo .
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].categoria);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].conteudo .
         Clear_buffer();
 
         printf("\n Digite a prioridade desejada(de 0 a 10): ");  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].prioridade .
         scanf("%d", &Lista[*Contador_Tarefas].prioridade);
         Clear_buffer();
 
+        if(Lista[*Contador_Tarefas].descricao == 0){}
         printf("\n Lista realizada com sucesso!! \n");
         
 
@@ -53,6 +54,7 @@ void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
     if (*Contador_Tarefas > 0 ){
         printf("digite a descricao da tarefa: ");
         scanf("%s", &remove_descricao);
+        Clear_buffer();
 
         for (int i = 0 ; i < *Contador_Tarefas ; ++i) {
             if(strcmp(remove_descricao,Lista[*Contador_Tarefas].descricao) == 0){
@@ -82,7 +84,7 @@ void Listar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
         for (int i = 0; i < *Contador_Tarefas; ++i) {
             printf("Tarefa: \n", i + 1);
             printf(" -->   Descrição:  \n", Lista[i].descricao);
-            printf(" -->   Conteudo:  \n", Lista[i].conteudo);
+            printf(" -->   Conteudo:  \n", Lista[i].categoria);
             printf(" -->   Prioridade:  \n", Lista[i].prioridade);
         }
     } else{
@@ -99,6 +101,7 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
     printf("Digite o nome da decricao para alterar: \n");
     scanf("%d", &altera_descricao);
+    Clear_buffer();
 
     if (*Contador_Tarefas > 0 ){
         printf("digite a descricao da tarefa: \n");
@@ -108,15 +111,18 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
             if(strchr(altera_descricao,Lista[*Contador_Tarefas].descricao) == 0){
                 printf("Digite a nova descricao: \n");
                 scanf("%d", &nova_descricao);
+                Clear_buffer();
 
                 printf("Digite o novo conteudo: \n");
                 scanf("%d", &novo_conteudo);
+                Clear_buffer();
 
                 printf("Digite a nova prioridade: \n");
                 scanf("%d", &nova_prioridade);
+                Clear_buffer();
 
                 nova_descricao == Lista[*Contador_Tarefas].descricao;
-                novo_conteudo == Lista[*Contador_Tarefas].conteudo;
+                novo_conteudo == Lista[*Contador_Tarefas].categoria;
                 nova_prioridade == Lista[*Contador_Tarefas].prioridade;
             }
         }
@@ -130,6 +136,7 @@ void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
     if(*Contador_Tarefas > 0){
         printf("Digite a prioridade escolhida: \n");
         scanf("%i", &prioridade_escolhida);
+        Clear_buffer();
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
             if(strchr(prioridade_escolhida, Lista[*Contador_Tarefas].prioridade) == 0 ){
@@ -139,8 +146,34 @@ void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
 }
 }
 
+void Filtrar_Estado(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
+}
 
+void Filtrar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+
+    if(*Contador_Tarefas > 0){
+        for (int i = 0; i < *Contador_Tarefas; ++i){
+            
+        }
+    }
+}
+
+void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+
+}
+
+void Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
+
+}
+
+void Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+
+}
+
+void Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+
+}
 
 void Clear_buffer(){  //evita erros com a funcao scanf
     int c;
