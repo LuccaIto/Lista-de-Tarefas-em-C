@@ -40,7 +40,7 @@ do {
             break;
 
         case 5:
-            Filtrar_Prioridade();
+            Filtrar_Prioridade(Lista, &Contador_Tarefas);
             break;
         
         case 6:

@@ -133,7 +133,7 @@ void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
             if(strchr(prioridade_escolhida, Lista[*Contador_Tarefas].prioridade) == 0 ){
-                printf("Lista: \n", i + 1);
+                printf("Lista: \n", Lista[i + 1]);
             }
         }   
 }
