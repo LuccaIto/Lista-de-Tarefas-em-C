@@ -13,11 +13,15 @@ do {
     printf("1. Criar tarefa; \n");
     printf("2. Remover tarefa; \n");
     printf("3. Listar tarefa; \n");
-    printf("4. ; \n");
-    printf("5. ; \n");
-    printf("6. ; \n");
-    printf("7. ; \n");
-    printf("8. ; \n");
+    printf("4. Alterar Tarefa; \n");
+    printf("5. Filtrar por Prioridade; \n");
+    printf("6. Filtrar por Estado; \n");
+    printf("7. Filtrar por Categoria; \n");
+    printf("8. Filtrar por Prioridade e Categoria; \n");
+    printf("9. Exportar por Prioridade; \n");
+    printf("10. Expotar por Categoria; \n");
+    printf("11. Exportar por Prioridade e Categoria; \n");
+
 
     scanf("%d", &opcao);
     //Clear_buffer();
@@ -26,7 +30,7 @@ do {
 // acho q estou puxando errado o "contador_tarefas"
     switch (opcao) {
          case 1:
-            Criar_Tarefa(Lista, &Contador_Tarefas);
+            Criar_Tarefa(Lista, &contador_tarefas);
             break;
         case 2:
             Remove_Tarefas(Lista, &contador_tarefas);
@@ -40,31 +44,31 @@ do {
             break;
 
         case 5:
-            Filtrar_Prioridade(Lista, &Contador_Tarefas);
+            Filtrar_Prioridade(Lista, &contador_tarefas);
             break;
         
         case 6:
-            Filtrar_Estado();
+            Filtrar_Estado(Lista, &contador_tarefas);
             break;
 
         case 7:
-            Filtrar_Categoria();
+            Filtrar_Categoria(Lista, &contador_tarefas);
             break;
         
         case 8:
-            Filtrar_Prioridade_Categoria();
+            Filtrar_Prioridade_Categoria(Lista, &contador_tarefas);
             break;
         
         case 9:
-            Exportar_Prioridade();
+            Exportar_Prioridade(Lista, &contador_tarefas);
             break;
         
         case 10:
-            Expotar_Categoria();
+            Exportar_Categoria(Lista, &contador_tarefas);
             break;
         
         case 11:
-            Exportar_Prioridade_Categoria();
+            Exportar_Prioridade_Categoria(Lista, &contador_tarefas);
             break;
 
         default:
@@ -76,13 +80,3 @@ do {
 return 0;
 
 }
-// menu();
-
-// scanf(" %d", opcao);
-// Clear_buffer();
-
-// if(opcao == 1){
-//     Criar_Tarefa(Lista, &contador_tarefas);
-// }while(opcao != 9);
-
-//}
