@@ -4,6 +4,13 @@
 
 int *Contador_Tarefas;  //ultima posição da lista .
 int indice = 0;
+//
+
+// Duvidas abaixo:
+// apagar_tarefas
+// alterar_trefas
+
+//
 
 // int menu(){
 //     printf("Selecione a tarefa desejada abaixo: \n");
@@ -58,20 +65,23 @@ void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
         Clear_buffer();
 
         for (int i = 0 ; i < *Contador_Tarefas ; ++i) {
-            if(strcmp(remove_descricao,Lista[*Contador_Tarefas].descricao) == 0){
+            // if(strcmp(remove_descricao,Lista[*Contador_Tarefas].descricao) == 0) essa seria a funcao certa nao?
+            if(strcmp(remove_descricao,Lista[i].descricao) == 0){
             Lista[i] = Lista[i + 1];
 
             printf(" -_-_-Lista deletada com sucesso!-_-_- ");
+            printf("\n");
             }
             else{
                 printf("-_-_-Descricao nao encontrada...-_-_- \n");
+                printf("\n");
             }
         }
         (*Contador_Tarefas --);
-        printf("-_-_-Remoção realizada com sucesso!!-_-_- \n");
     }
     else{
         printf("-_-_-Erro na remoção da tarefa desejada. Tente novamente...-_-_- \n");
+        printf("\n");
     }
 }
 
@@ -91,6 +101,7 @@ void Listar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
         }
     } else{
         printf("\n -_-_- A lista esta vazia! -_-_- \n");
+        printf("\n");
 }
 }
 
@@ -107,8 +118,9 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
         Clear_buffer();
 
         for (int i = 0 ; i < *Contador_Tarefas ; ++i) {
-            if(strcmp(altera_descricao,Lista[*Contador_Tarefas].descricao) == 0){
+            if(strcmp(altera_descricao,Lista[i].descricao) == 0){
                 printf("--> Digite a nova descricao: \n");
+                // salvar no scanf como Lista[i].descricao seria o certo?
                 scanf(" %[^\n]", nova_descricao);
                 Clear_buffer();
 
@@ -123,12 +135,18 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
                 printf("--> Digite o novo status: \n");
                 scanf(" %[^\n]", novo_status);
                 Clear_buffer();
+// problema em salvar as novas descricoes na lista
+                nova_descricao == Lista[i].descricao;
+                nova_categoria == Lista[i].categoria;
+                nova_prioridade == Lista[i].prioridade;
+                novo_status == Lista[i].status;
 
-            //     nova_descricao == Lista[*Contador_Tarefas].descricao;
-            //     novo_conteudo == Lista[*Contador_Tarefas].categoria;
-            //     nova_prioridade == Lista[*Contador_Tarefas].prioridade;
-            //     novo_status == Lista[*Contador_Tarefas].status;
-             }
+                printf("\n");
+            }
+            else{
+                printf("\n -_-_- Descricao nao encontrada... -_-_- \n");
+                printf("\n");
+            }
         }
         
     }
@@ -143,12 +161,14 @@ void Filtrar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
         Clear_buffer();
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
-            if(prioridade_escolhida == Lista[*Contador_Tarefas].prioridade){
-                printf("Lista: %d\n", i + 1);
+            if(prioridade_escolhida == Lista[i].prioridade){
+                printf("\n Lista %d\n", i + 1);
                 printf("Descricao: %s\n", Lista[i].descricao);
                 printf("Categoria: %s\n", Lista[i].categoria);
                 printf("Prioridade: %d\n", Lista[i].prioridade);
                 printf("Status: %s\n", Lista[i].status);
+                printf("\n");
+
             }
         }   
 }
@@ -163,12 +183,13 @@ void Filtrar_Estado(Lista_Tarefas Lista[], int *Contador_Tarefas){
         Clear_buffer();
 
         for (int i = 0; i < *Contador_Tarefas; ++i) {
-            if(strcmp(status_escolhido, Lista[*Contador_Tarefas].status) == 0 ){
-                printf("Lista: %d\n", i + 1);
+            if(strcmp(status_escolhido, Lista[i].status) == 0 ){
+                printf("\n Lista %d\n", i + 1);
                 printf("Descricao: %s\n", Lista[i].descricao);
                 printf("Categoria: %s\n", Lista[i].categoria);
                 printf("Prioridade: %d\n", Lista[i].prioridade);
                 printf("Status: %s\n", Lista[i].status);
+                printf("\n");
             }
         }   
     }
