@@ -195,20 +195,83 @@ void Filtrar_Estado(Lista_Tarefas Lista[], int *Contador_Tarefas){
     }
 }
 
-void Filtrar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+void Filtrar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas) {
+    char categoria_escolhida[50];
 
-    if(*Contador_Tarefas > 0){
-        for (int i = 0; i < *Contador_Tarefas; ++i){
-            
+    if (*Contador_Tarefas > 0) {
+        printf("Digite a categoria escolhida: \n");
+        scanf(" %[^\n]", categoria_escolhida);
+        Clear_buffer();
+
+        // Filtrar as tarefas correspondentes à categoria escolhida
+        int tarefasFiltradas = 0;
+        for (int i = 0; i < *Contador_Tarefas; ++i) {
+            if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
+                tarefasFiltradas++;
+            }
+        }
+
+        if (tarefasFiltradas > 0) {
+            // Criar uma cópia das tarefas correspondentes
+            Lista_Tarefas tarefasCorrespondentes[tarefasFiltradas];
+            int index = 0;
+
+            for (int i = 0; i < *Contador_Tarefas; ++i) {
+                if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
+                    tarefasCorrespondentes[index++] = Lista[i];
+                }
+            }
+
+            // Ordenar as tarefas correspondentes por prioridade
+            Ordenar_Por_Prioridade(tarefasCorrespondentes, tarefasFiltradas);
+
+            // Imprimir as tarefas ordenadas
+            printf("--> Tarefas filtradas e ordenadas por prioridade:\n");
+            for (int i = 0; i < tarefasFiltradas; ++i) {
+                printf("\n Tarefa %d\n", i + 1);
+                printf("Descricao: %s\n", tarefasCorrespondentes[i].descricao);
+                printf("Categoria: %s\n", tarefasCorrespondentes[i].categoria);
+                printf("Prioridade: %d\n", tarefasCorrespondentes[i].prioridade);
+                printf("Status: %s\n", tarefasCorrespondentes[i].status);
+                printf("\n");
+            }
+        } else {
+            printf("\n -_-_- Categoria nao encontrada... -_-_- \n");
         }
     }
 }
 
-void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
+void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    char categoria_escolhida[50];
+    int prioridade_escolhida;
+
+    if(*Contador_Tarefas){
+        printf("Digite a categoria: \n");
+        scanf("%s", categoria_escolhida);
+        // Clear_buffer();
+
+        printf("Digite a prioridade: \n");
+        scanf("%d", &prioridade_escolhida);
+        // Clear_buffer();
+
+        for(int i = 0; i < *Contador_Tarefas; i ++){
+            if(strcmp(categoria_escolhida,Lista[i].categoria) == 0 && prioridade_escolhida == Lista[i].prioridade){
+                printf("\n Lista %d\n", i + 1);
+                printf("Descricao: %s\n", Lista[i].descricao);
+                printf("Categoria: %s\n", Lista[i].categoria);
+                printf("Prioridade: %d\n", Lista[i].prioridade);
+                printf("Status: %s\n", Lista[i].status);
+                printf("\n");
+            }
+        }
+    }
 }
 
 void Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    Lista_Tarefas Prioridade[100];
+
+    for
 
 }
 
@@ -223,4 +286,43 @@ void Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas)
 void Clear_buffer(){  //evita erros com a funcao scanf
     int c;
     while((c = getchar()) != '\n' && c != EOF);
+}
+
+void Ordenar_Por_Prioridade(Lista_Tarefas Lista[], int Contador_Tarefas) {
+    // Implementação simples do algoritmo de ordenação de bolhas
+    for (int i = 0; i < Contador_Tarefas ; ++i) {
+        for (int j = 0; j < Contador_Tarefas - i - 1; ++j) {
+            if (Lista[j].prioridade > Lista[j + 1].prioridade) {
+                // Troca as posições se a prioridade for maior
+                Lista_Tarefas temp = Lista[j];
+                Lista[j] = Lista[j + 1];
+                Lista[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int Carregar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    FILE *f = fopen("Lista", "rb");
+    if(f == NULL){
+        return 1;
+    }
+    else{
+        fread(Contador_Tarefas,sizeof(Lista_Tarefas), 1, f);
+        fclose(f);
+    }
+    return 0;
+
+}
+
+int Salvar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    FILE *f = fopen("Lista", "wb");
+    if(f == NULL){
+        return 1;
+    }
+    else{
+        fwrite(Contador_Tarefas,sizeof(Lista_Tarefas), 1, f);
+        fclose(f);
+    }
+    return 0;
 }

@@ -35,4 +35,10 @@ void Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas)
 
 void Clear_buffer();
 
+void Ordenar_Por_Prioridade(Lista_Tarefas Lista[], int Contador_Tarefas);
+
+int Carregar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas);
+
+int Salvar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas);
+
 #endif //PROJETO_2_BANCO_H

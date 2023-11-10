@@ -7,6 +7,13 @@ Lista_Tarefas Lista[100];
 int contador_tarefas = 0;
 int indice;
 int opcao;
+int cod;
+char arquivo[] = "listatarefa";
+
+cod = Carregar_Tarefa(Lista, &contador_tarefas);
+if(cod == 1){
+    contador_tarefas = 0;
+}
 
 do {
     printf("Selecione a tarefa desejada abaixo: \n");
@@ -21,10 +28,12 @@ do {
     printf("9. Exportar por Prioridade; \n");
     printf("10. Expotar por Categoria; \n");
     printf("11. Exportar por Prioridade e Categoria; \n");
+    printf("12. Sair; \n");
+
 
 
     scanf("%d", &opcao);
-    //Clear_buffer();
+    Clear_buffer();
 
 
 // acho q estou puxando errado o "contador_tarefas"
@@ -72,11 +81,16 @@ do {
             break;
 
         default:
-            printf("Nenhuma opção encontrada. Tente novamente.(Opcoes : 1. Criar tarefa; 2. Remover tarefa; 3. Listar tarefa; 4. Alterar_Tarefas; 5. Filtrar_Prioridade; 6. Filtrar_Estado; 7. Filtrar_Categoria; 8. Filtrar_Prioridade_Categoria; 9. Exportar_Prioridade; 10. Expotar_Categoria; 11. Exportar_Prioridade_Categoria;");
+            Salvar_Tarefa(Lista, &contador_tarefas);
+            printf("u");
     }
-
 
 }while (opcao != 0);
 return 0;
+
+cod = Salvar_Tarefa(Lista, contador_tarefas);
+if(cod != 0){
+    printf("Erro..");
+}
 
 }
