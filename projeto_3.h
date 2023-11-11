@@ -27,11 +27,11 @@ void Filtrar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
 
 void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
 
-void Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas);
+int Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas);
 
-void Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
+int Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
 
-void Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
+int Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas);
 
 void Clear_buffer();
 

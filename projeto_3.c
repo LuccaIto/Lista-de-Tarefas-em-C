@@ -268,18 +268,33 @@ void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
     }
 }
 
-void Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
+int Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
     Lista_Tarefas Prioridade[100];
 
-    for
+    int prioridade_escolhida;
+
+    if(*Contador_Tarefas > 0){
+        printf("Digite o número da prioridade que voce deseja exportar:\n");
+        scanf("%d", &prioridade_escolhida);  // armazena a prioridade digitada
+        
+        if (prioridade_escolhida >= 0 && prioridade_escolhida <= 10){  // confere se a prioridade esta entre 0 e 10
+            FILE *f = fopen("tarefas_prioridade.txt", "w");  // abre o arquivo 
+
+    }
 
 }
 
-void Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+int Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    char categoriaselecionada[100];
+    int encontrado = 0;
+    tarefa tarefasprioritarias[100];
 
+    if(*Contador_Tarefas > 0){
+        
+    }                       
 }
 
-void Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+int Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
 }
 
