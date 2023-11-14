@@ -107,10 +107,10 @@ void Listar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
 
 void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
     char altera_descricao[50];
-    char nova_descricao[50];
-    char nova_categoria[50];
-    int nova_prioridade;
-    char novo_status[20];
+    // char nova_descricao[50];
+    // char nova_categoria[50];
+    // int nova_prioridade;
+    // char novo_status[20];
 
     if (*Contador_Tarefas > 0 ){
         printf("\n --> digite a descricao da tarefa a ser alterada: \n");
@@ -121,19 +121,19 @@ void Alterar_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){
             if(strcmp(altera_descricao,Lista[i].descricao) == 0){
                 printf("--> Digite a nova descricao: \n");
                 // salvar no scanf como Lista[i].descricao seria o certo?
-                scanf(" %[^\n]", nova_descricao);
+                scanf(" %[^\n]", Lista[i].descricao);
                 Clear_buffer();
 
                 printf("--> Digite o novo conteudo: \n");
-                scanf(" %[^\n]", nova_categoria);
+                scanf(" %[^\n]", Lista[i].categoria);
                 Clear_buffer();
 
                 printf("--> Digite a nova prioridade: \n");
-                scanf("%d", &nova_prioridade);
+                scanf("%d", &Lista[i].prioridade);
                 Clear_buffer();
 
                 printf("--> Digite o novo status: \n");
-                scanf(" %[^\n]", novo_status);
+                scanf(" %[^\n]", Lista[i].status);
                 Clear_buffer();
 
                 // nova_descricao == Lista[i].descricao;
@@ -397,7 +397,7 @@ void Ordenar_Por_Prioridade(Lista_Tarefas Lista[], int Contador_Tarefas) {
 }
 
 int Carregar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas){
-    FILE *f = fopen("Lista", "rb");
+    FILE *f = fopen("Lista.txt", "rb");
     if(f == NULL){
         return 1;
     }
@@ -410,7 +410,7 @@ int Carregar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas){
 }
 
 int Salvar_Tarefa(Lista_Tarefas Lista[], int *Contador_Tarefas){
-    FILE *f = fopen("Lista", "wb");
+    FILE *f = fopen("Lista.txt", "wb");
     if(f == NULL){
         return 1;
     }

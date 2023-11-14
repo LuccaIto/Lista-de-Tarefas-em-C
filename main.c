@@ -80,7 +80,7 @@ do {
             Exportar_Prioridade_Categoria(Lista, &contador_tarefas);
             break;
 
-        default:
+        case 12:
             cod = Salvar_Tarefa(Lista, &contador_tarefas);
                 if (cod != 0) {
                     printf("Erro ao salvar as tarefas.\n");
