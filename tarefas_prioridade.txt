@@ -1,0 +1,6 @@
+
+ Lista 2
+Descricao: ta
+Categoria: co
+Prioridade: 2
+Status: st

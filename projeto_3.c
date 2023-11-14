@@ -271,111 +271,111 @@ void Filtrar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
     }
 }
 
-// int Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
-//     Lista_Tarefas Prioridade[100];
+int Exportar_Prioridade(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    Lista_Tarefas Prioridade[100];
 
-//     int prioridade_escolhida;  // variavel criada para comparar com a lista
+    int prioridade_escolhida;  // variavel criada para comparar com a lista
 
-//     if(*Contador_Tarefas > 0){  // apenas roda quando a condição for realizada, no caso o *Contador_Tarefas(minha ultima posição na lista) for maior que zero, ou seja, Lista tem que ter uma ou mais posições 
-//         printf("\n --> Digite o número da prioridade que voce deseja exportar: \n");
-//         scanf("%d", &prioridade_escolhida);  // armazena a prioridade digitada me &prioridade_escolhida
+    if(*Contador_Tarefas > 0){  // apenas roda quando a condição for realizada, no caso o *Contador_Tarefas(minha ultima posição na lista) for maior que zero, ou seja, Lista tem que ter uma ou mais posições 
+        printf("\n --> Digite o número da prioridade que voce deseja exportar: \n");
+        scanf("%d", &prioridade_escolhida);  // armazena a prioridade digitada me &prioridade_escolhida
 
-//         FILE *f = fopen("tarefas_prioridade.txt", "w");  // abre o arquivo
+        FILE *f = fopen("tarefas_prioridade.txt", "w");  // abre o arquivo
 
-//         for(int i = 0; i = *Contador_Tarefas ; i++){  // roda a lista da sua primeira posição até a ultima posição incluida, no caso *Contador_Tarefas
-//             if (prioridade_escolhida == Lista[i].prioridade){  // compara prioridade_escolhida com a prioridade criada em Lista[i].prioridade na funcao Criar_Tarefas
-//                 fprintf("\n Lista %d\n", i + 1);
-//                 fprintf("Descricao: %s\n", Lista[i].descricao);  // print da descricao na Lista
-//                 fprintf("Categoria: %s\n", Lista[i].categoria);  // print da categoria na Lista
-//                 fprintf("Prioridade: %d\n", Lista[i].prioridade);  // print da prioridade na Lista
-//                 fprintf("Status: %s\n", Lista[i].status);  // print da status na Lista
-//             }
-//         }
-//         fclose(f);  // fecha o arquivo
-//         printf("\n Tarefas incluidas com sucesso!!");
-//     }
-//     else{
-//         printf("Prioridade nao encontrada... \n");
-//     }
-// }
+        for(int i = 0; i < *Contador_Tarefas ; i++){  // roda a lista da sua primeira posição até a ultima posição incluida, no caso *Contador_Tarefas
+            if (prioridade_escolhida == Lista[i].prioridade){  // compara prioridade_escolhida com a prioridade criada em Lista[i].prioridade na funcao Criar_Tarefas
+                fprintf(f, "\n Lista %d\n", i + 1);
+                fprintf(f, "Descricao: %s\n", Lista[i].descricao);  // print da descricao na Lista
+                fprintf(f, "Categoria: %s\n", Lista[i].categoria);  // print da categoria na Lista
+                fprintf(f, "Prioridade: %d\n", Lista[i].prioridade);  // print da prioridade na Lista
+                fprintf(f, "Status: %s\n", Lista[i].status);  // print da status na Lista
+            }
+        }
+        fclose(f);  // fecha o arquivo
+        printf("\n Tarefas incluidas com sucesso!!");
+    }
+    else{
+        printf("Prioridade nao encontrada... \n");
+    }
+}
 
-// int Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
-//     char categoria_escolhida[50];
+int Exportar_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    char categoria_escolhida[50];
 
-//     if (*Contador_Tarefas > 0) {
-//         printf("Digite a categoria escolhida: \n");
-//         scanf(" %[^\n]", categoria_escolhida);
-//         Clear_buffer();
+    if (*Contador_Tarefas > 0) {
+        printf("Digite a categoria escolhida: \n");
+        scanf(" %[^\n]", categoria_escolhida);
+        Clear_buffer();
         
-//         int tarefasFiltradas = 0;  // Filtrar as tarefas correspondentes à categoria escolhida
+        int tarefasFiltradas = 0;  // Filtrar as tarefas correspondentes à categoria escolhida
 
-//         for (int i = 0; i < *Contador_Tarefas; ++i) {
-//             if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
-//                 tarefasFiltradas++;
-//             }
-//         }
+        for (int i = 0; i < *Contador_Tarefas; ++i) {
+            if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
+                tarefasFiltradas++;
+            }
+        }
 
-//         if (tarefasFiltradas > 0) {
-//             Lista_Tarefas tarefasCorrespondentes[tarefasFiltradas];  // Criar uma cópia das tarefas correspondentes
-//             int cont = 0;
+        if (tarefasFiltradas > 0) {
+            Lista_Tarefas tarefasCorrespondentes[tarefasFiltradas];  // Criar uma cópia das tarefas correspondentes
+            int cont = 0;
 
-//             FILE *f = fopen("tarefas_prioridade.txt", "w");  // abre o arquivo
+            FILE *f = fopen("tarefas_categoria.txt", "w");  // abre o arquivo
 
-//             for (int i = 0; i < *Contador_Tarefas; ++i) {
-//                 if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
-//                     tarefasCorrespondentes[cont++] = Lista[i];
+            for (int i = 0; i < *Contador_Tarefas; ++i) {
+                if (strcmp(categoria_escolhida, Lista[i].categoria) == 0) {
+                    tarefasCorrespondentes[cont++] = Lista[i];
 
-//                 }
-//             }
+                }
+            }
 
-//             Ordenar_Por_Prioridade(tarefasCorrespondentes, tarefasFiltradas);  // Ordenar as tarefas correspondentes por prioridade
+            Ordenar_Por_Prioridade(tarefasCorrespondentes, tarefasFiltradas);  // Ordenar as tarefas correspondentes por prioridade
  
 
-//             printf("\n --> Tarefas filtradas e ordenadas por prioridade:\n");  // Imprimir as tarefas ordenadas
-//             for (int i = 0; i < tarefasFiltradas; ++i) {
-//                 fprintf("\n Tarefa %d\n", i + 1);
-//                 fprintf("Descricao: %s\n", tarefasCorrespondentes[i].descricao);
-//                 fprintf("Categoria: %s\n", tarefasCorrespondentes[i].categoria);
-//                 fprintf("Prioridade: %d\n", tarefasCorrespondentes[i].prioridade);
-//                 fprintf("Status: %s\n", tarefasCorrespondentes[i].status);
-//             }
+            printf("\n --> Tarefas filtradas e ordenadas por prioridade:\n");  // Imprimir as tarefas ordenadas
+            for (int i = 0; i < tarefasFiltradas; ++i) {
+                fprintf(f, "\n Tarefa %d\n", i + 1);
+                fprintf(f, "Descricao: %s\n", tarefasCorrespondentes[i].descricao);
+                fprintf(f, "Categoria: %s\n", tarefasCorrespondentes[i].categoria);
+                fprintf(f, "Prioridade: %d\n", tarefasCorrespondentes[i].prioridade);
+                fprintf(f, "Status: %s\n", tarefasCorrespondentes[i].status);
+            }
 
-//             fclos(f);
-//         } else {
-//             printf("\n -_-_- Categoria nao encontrada... -_-_- \n");
-//         }
-//     }
-// }
+            fclose(f);
+        } else {
+            printf("\n -_-_- Categoria nao encontrada... -_-_- \n");
+        }
+    }
+}
 
-// int Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
-//     char categoria_escolhida[50];
-//     int prioridade_escolhida;
+int Exportar_Prioridade_Categoria(Lista_Tarefas Lista[], int *Contador_Tarefas){
+    char categoria_escolhida[50];
+    int prioridade_escolhida;
 
-//     if(*Contador_Tarefas){
-//         printf("\n --> Digite a categoria: \n");
-//         scanf("%s", categoria_escolhida);
-//         Clear_buffer();
+    if(*Contador_Tarefas){
+        printf("\n --> Digite a categoria: \n");
+        scanf("%s", categoria_escolhida);
+        Clear_buffer();
 
-//         printf("Digite a prioridade: \n");
-//         scanf("%d", &prioridade_escolhida);
-//         Clear_buffer();
+        printf("Digite a prioridade: \n");
+        scanf("%d", &prioridade_escolhida);
+        Clear_buffer();
 
-//         FILE *f = fopen("tarefas_prioridade.txt", "w");  // abre o arquivo
+        FILE *f = fopen("tarefas_prioridade_categoria.txt", "w");  // abre o arquivo
 
-//         for(int i = 0; i < *Contador_Tarefas; i ++){
-//             if(strcmp(categoria_escolhida,Lista[i].categoria) == 0 && prioridade_escolhida == Lista[i].prioridade){
-//                 fprintf("\n Lista %d\n", i + 1);
-//                 fprintf("Descricao: %s\n", Lista[i].descricao);
-//                 fprintf("Categoria: %s\n", Lista[i].categoria);
-//                 fprintf("Prioridade: %d\n", Lista[i].prioridade);
-//                 fprintf("Status: %s\n", Lista[i].status);
-//             }
-//         }
-//         fclose(f);
-//         printf("\n -_-_- Tarefa exportada com sucesso!! -_-_- \n");
-//     }
+        for(int i = 0; i < *Contador_Tarefas; i ++){
+            if(strcmp(categoria_escolhida,Lista[i].categoria) == 0 && prioridade_escolhida == Lista[i].prioridade){
+                fprintf(f, "\n Lista %d\n", i + 1);
+                fprintf(f, "Descricao: %s\n", Lista[i].descricao);
+                fprintf(f, "Categoria: %s\n", Lista[i].categoria);
+                fprintf(f, "Prioridade: %d\n", Lista[i].prioridade);
+                fprintf(f, "Status: %s\n", Lista[i].status);
+            }
+        }
+        fclose(f);
+        printf("\n -_-_- Tarefa exportada com sucesso!! -_-_- \n");
+    }
 
-// }
+}
 
 void Clear_buffer(){  //evita erros com a funcao scanf
     int c;

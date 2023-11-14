@@ -81,16 +81,14 @@ do {
             break;
 
         default:
-            Salvar_Tarefa(Lista, &contador_tarefas);
-            printf("u");
+            cod = Salvar_Tarefa(Lista, &contador_tarefas);
+                if (cod != 0) {
+                    printf("Erro ao salvar as tarefas.\n");
+                }
+                printf("u");
     }
 
-}while (opcao != 0);
+}while (opcao != 12);
+
 return 0;
-
-cod = Salvar_Tarefa(Lista, contador_tarefas);
-if(cod != 0){
-    printf("Erro..");
-}
-
 }
