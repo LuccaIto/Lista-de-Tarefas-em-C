@@ -3,7 +3,7 @@
 
 int *Contador_Tarefas;
 
-typedef struct {
+typedef struct {  //estrutura que define a quantidade e tipo da funcao
     char descricao[50];
     char categoria[50];
     char status[20];
