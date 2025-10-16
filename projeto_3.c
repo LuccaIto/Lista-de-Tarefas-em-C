@@ -23,11 +23,11 @@ int Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){  //Essa funçã
 
     if (*Contador_Tarefas <= 100) {  //Condição que só funciona quando a ultima posição(*Contador_Tarefas) na lista[] for menor ou igual a 100 .
         printf("\n --> Digite a descricao da tarefa: ");
-        scanf("%s", Lista[*Contador_Tarefas].descricao);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].descricao .
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].descricao);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].descricao .
         Clear_buffer();
 
         printf("\n --> Digite o conteudo da tarefa: ");
-        scanf("%s", Lista[*Contador_Tarefas].categoria);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].conteudo .
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].categoria);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].conteudo .
         Clear_buffer();
 
         printf("\n --> Digite a prioridade desejada(de 0 a 10): ");
@@ -35,7 +35,7 @@ int Criar_Tarefa( Lista_Tarefas Lista[], int *Contador_Tarefas){  //Essa funçã
         Clear_buffer();
 
         printf("\n --> Digitar status: "); 
-        scanf("%s", Lista[*Contador_Tarefas].status);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].prioridade .
+        scanf(" %[^\n]", Lista[*Contador_Tarefas].status);  //Salva a descricao escrita pelo cliente em Lista[*Contador_Tarefas].prioridade .
 
         printf("\n -_-_-Lista realizada com sucesso!!-_-_- \n");
         

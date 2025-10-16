@@ -27,8 +27,7 @@ do {
     printf("10. Expotar por Categoria; \n");  //pede para o usuario exportar por categoria uma tarefa.
     printf("11. Exportar por Prioridade e Categoria; \n");  //pede para o usuario exportar por prioridade e categoria uma tarefa.
     printf("12. Sair; \n");  //diz que vai fechar o programa.
-
-
+    
 
     scanf("%d", &opcao);
     Clear_buffer();
