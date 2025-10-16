@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int *Contador_Tarefas;  //ultima posição da lista .
+extern int *Contador_Tarefas;  //ultima posição da lista .
 int indice = 0;
 
 
@@ -57,19 +57,27 @@ void Remove_Tarefas(Lista_Tarefas Lista[], int *Contador_Tarefas){  //Essa funç
         scanf("%s", remove_descricao);  //guarda o que foi escrito pelo usuario em "remove_descricao" .
         Clear_buffer();  
 
+        int encontrada = 0;
+
         for (int i = 0 ; i < *Contador_Tarefas ; ++i) {  //looping que roda a Lista[] desde a primeira posicao (i = 0) ate a ultima posicao .
             if(strcmp(remove_descricao,Lista[i].descricao) == 0){  //condicao que so se aplica quando a descricao escrita pelo usuario em "remove_descricao" for igual a "Lista[i].descricao" que foi escrita na Lista[i] na funcao "Criar_Tarefa"
-            Lista[i] = Lista[i + 1];  //substitui a posicao a frente pela posicao atual
-
-            printf(" -_-_-Lista deletada com sucesso!-_-_- ");
-            printf("\n");
-            }
-            else{
-                printf("-_-_-Descricao nao encontrada...-_-_- \n");
+                for (int j = i; j < *Contador_Tarefas - 1; ++j) {
+                    Lista[j] = Lista[j + 1];
+                }
+                (*Contador_Tarefas --);  //decrementa o contador
+                encontrada = 1;
+                printf(" -_-_-Lista deletada com sucesso!-_-_- ");
                 printf("\n");
+                break;
             }
+            
         }
-        (*Contador_Tarefas --);  //Remove a ultima posicao da tarefa 
+
+        if(!encontrada){
+            printf("-_-_-Descricao nao encontrada...-_-_- \n\n");
+            printf("\n");
+        }
+           
     }
     else{
         printf("-_-_-Erro na remoção da tarefa desejada. Tente novamente...-_-_- \n");

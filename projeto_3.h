@@ -1,7 +1,7 @@
 #ifndef PROJETO_3_BANCO_H
 #define PROJETO_3_BANCO_H
 
-int *Contador_Tarefas;
+extern int *Contador_Tarefas;
 
 typedef struct {  //estrutura que define a quantidade e tipo da funcao
     char descricao[50];
